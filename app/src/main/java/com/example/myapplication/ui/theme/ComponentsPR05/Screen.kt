@@ -3,6 +3,9 @@ package com.example.myapplication.ui.theme.ComponentsPR05
 import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.snapping.SnapPosition
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -51,155 +54,121 @@ fun Screen(modifier: Modifier = Modifier) {
 
     Column(
         modifier = modifier
+            .fillMaxSize()
             .background(Color.White)
-            .fillMaxSize()
             .padding(
-                start = 21.dp,
-                end = 22.dp,
-                top = 101.dp,
-                bottom  = 620.dp
+                horizontal = 20.dp
             ),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
-        Text(
-        text = "Добро пожаловать!",
-        fontSize = 24.sp,
-        fontWeight = FontWeight.Bold,
-        lineHeight = 28.sp
-    )
-        Spacer(modifier=modifier.height(23.dp))
-        Text(
-            text = "Войдите, чтобы пользоваться функциями приложения",
-            fontSize = 15.sp,
-            lineHeight = 20.sp
-        )
-        Spacer(modifier=modifier.height(70.dp))
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceBetween
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Spacer(modifier = Modifier.height(101.dp))
 
-    }
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(
-                start = 20.dp,
-                end = 20.dp,
-                top = 262.dp,
-                bottom  = 478.dp
-            ),
-        horizontalAlignment = Alignment.CenterHorizontally
-    )
-    { Text(
-        text = "Вход по E-mail",
-        textAlign = TextAlign.Left,
-        fontSize = 14.sp,
-        color = TextColor,
-        modifier=modifier
-            .fillMaxWidth(),
-        lineHeight = 20.sp
-    )
+            Text(
+                text = "Добро пожаловать!",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                lineHeight = 28.sp,
+            )
+            Spacer(modifier = Modifier.height(23.dp))
+            Text(
+                text = "Войдите, чтобы пользоваться функциями приложения",
+                fontSize = 15.sp,
+                lineHeight = 20.sp,
+            )
+            Spacer(modifier = Modifier.height(70.dp))
+            Text(
+                text = "Вход по E-mail",
+                textAlign = TextAlign.Left,
+                fontSize = 14.sp,
+                color = TextColor,
+                modifier = Modifier.fillMaxWidth(),
+                lineHeight = 20.sp
+            )
 
-        OutlinedTextField(
-            value = emailText,
-            onValueChange = {emailText = it},
-            colors =  OutlinedTextFieldDefaults.colors(
-                focusedContainerColor = TextFieldColors,
-                unfocusedContainerColor = TextFieldColors,
-                unfocusedBorderColor = TextFieldColorsBorder,
-                focusedBorderColor =  TextFieldColorsBorder
-            ),
+            Spacer(modifier = Modifier.height(8.dp))
 
-            placeholder = {
+            OutlinedTextField(
+                value = emailText,
+                onValueChange = { emailText = it },
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = TextFieldColors,
+                    unfocusedContainerColor = TextFieldColors,
+                    unfocusedBorderColor = TextFieldColorsBorder,
+                    focusedBorderColor = TextFieldColorsBorder
+                ),
+                placeholder = {
+                    Text(
+                        text = "example@mail.ru",
+                        color = Color.Gray
+                    )
+                },
+                shape = RoundedCornerShape(10.dp),
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp),
+                onClick = { Log.d("MyLog", "Введенный email: $emailText") },
+                enabled = isButtonEnabled,
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonColors(
+                    AccentColorPrimaryButton,
+                    AccentColorDisabledButtonText,
+                    AccentColorDisabledButton,
+                    AccentColorDisabledButton
+                ),
+            ) {
                 Text(
-                    text = "example@mail.ru",
-                    color = Color.Gray
+                    text = "Далее",
+                    color = Color.White,
+                    fontSize = 17.sp,
+                    lineHeight = 24.sp
                 )
-            },
-
-            shape = RoundedCornerShape(10.dp),
-            modifier = Modifier
-                .fillMaxWidth(),)
-
-        Spacer(modifier=modifier.height(32.dp))
-
-    }
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(
-                start = 20.dp,
-                end = 20.dp,
-                top = 366.dp,
-                bottom  = 390.dp
-            ),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
-        Button(
-            modifier= Modifier
-                .fillMaxWidth()
-                .width(335.dp)
-                .height(56.dp),
-            onClick = { Log.d("MyLog", "Введенный email: $emailText")},
-            enabled = isButtonEnabled,
-            shape = RoundedCornerShape(10.dp),
-            colors = ButtonColors(
-                AccentColorPrimaryButton,
-                AccentColorDisabledButtonText,
-                AccentColorDisabledButton,
-                AccentColorDisabledButton
-            ),
-
-            ) {
+            }
+        }
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth()
+        ) {
             Text(
-                text="Далее",
-                color = Color.White,
+                text = "Или войдите с помощью",
+                color = ColorTextBottom,
                 fontSize = 17.sp,
-                modifier=modifier,
                 lineHeight = 24.sp
             )
-        }
-    }
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(
-                start = 19.dp,
-                end = 21.dp,
-                top = 660.dp,
-                bottom  = 56.dp
-            ),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
-        Text(
-            text="Или войдите с помощью",
-            color = ColorTextBottom,
-            fontSize = 17.sp,
-            modifier=modifier,
-            lineHeight = 24.sp
-        )
-        Spacer(modifier=modifier.height(32.dp))
-        Button(
-            modifier= Modifier
-                .fillMaxWidth()
-                .width(335.dp)
-                .height(56.dp),
-            onClick = {},
-            shape = RoundedCornerShape(10.dp),
-            border = BorderStroke(1.dp, color =ColorBottomBorder ),
-            colors = ButtonDefaults.buttonColors(containerColor = Color.White),
 
+            Spacer(modifier = Modifier.height(32.dp))
+
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp),
+                onClick = {},
+                shape = RoundedCornerShape(10.dp),
+                border = BorderStroke(1.dp, color = ColorBottomBorder),
+                colors = ButtonDefaults.buttonColors(containerColor = Color.White),
             ) {
-            Text(
-                text="Войти с Яндекс",
-                color = ColorBottomBorder,
-                fontSize = 17.sp,
-                modifier=modifier,
-                lineHeight = 24.sp
+                Text(
+                    text = "Войти с Яндекс",
+                    color = ColorBottomBorder,
+                    fontSize = 17.sp,
+                    lineHeight = 24.sp
+                )
+            }
 
-            )
+            Spacer(modifier = Modifier.height(56.dp))
         }
     }
-
 }
-
 @Preview
 @Composable
 private fun ScreenPrev() {

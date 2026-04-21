@@ -2,12 +2,14 @@ package com.example.myapplication.ui.theme.ComponentsPR06
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,46 +34,53 @@ import com.example.myapplication.ui.theme.TextColorGroup3_text
 //и 5 параметров
 //для демонтрации  вызвать функцию с разными параметрами
 @Composable
-fun Onboard1(modifier: Modifier = Modifier,textUp: String ,textCenterTitle:String,textCenter:String) {
+fun Onboard1(
+    modifier: Modifier = Modifier,
+    textUp: String,
+    textCenterTitle:String,
+    textCenter:String,
+    imageTopResId: Int,
+    imageBottomResId: Int )
+{
     Column(
         modifier = modifier
             .background(Color.White)
             .fillMaxSize()
             .padding(
-                start = 30.dp,
-                end = 285.dp,
-                top = 49.dp,
-                bottom  = 739.dp
+                horizontal = 20.dp
             ),
-        horizontalAlignment = Alignment.CenterHorizontally
-    )
-    {
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceBetween
+    ) {
         Text(
             text = textUp,
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(start = 0.dp,
+                    end = 243.dp,
+                    top = 49.dp,
+                    bottom = 739.dp),
             fontSize = 20.sp,
             fontFamily = LatoFontFamily,
             color = TextColor2,
-            modifier = modifier
-                .fillMaxWidth(),
+
             lineHeight = 20.sp,
             textAlign = TextAlign.Left
-        )
-    }
+        )}
     Image(
-        modifier=modifier
+        modifier = modifier
             .padding(
                 start = 208.dp,
-                end = 0.04.dp,
+                end = 0.dp,
                 top = 49.dp,
-                bottom  = 599.89.dp
+                bottom = 599.89.dp
             ),
         painter = painterResource(id = R.drawable.shape),
-        contentDescription = "Shape image"
+        contentDescription = "Top image"
     )
-    //Исправить т.к задается жестко
-    Spacer(modifier=modifier.height(60.89.dp))
+    Spacer(modifier = modifier.height(60.89.dp))
     Text(
-        text= textCenterTitle,
+        text = textCenterTitle,
         fontSize = 20.sp,
         fontFamily = LatoFontFamily,
         color = TextColorGroup3,
@@ -82,16 +91,15 @@ fun Onboard1(modifier: Modifier = Modifier,textUp: String ,textCenterTitle:Strin
                 start = 73.dp,
                 end = 88.dp,
                 top = 273.dp,
-                bottom  = 466.dp
+                bottom = 466.dp
             )
             .width(83.dp)
             .height(24.dp),
         lineHeight = 20.sp
     )
-    //Исправить т.к задается жестко
-    Spacer(modifier=modifier.height(29.dp))
+    Spacer(modifier = modifier.height(29.dp))
     Text(
-        text= textCenter,
+        text = textCenter,
         fontSize = 14.sp,
         fontFamily = LatoFontFamily,
         color = TextColorGroup3_text,
@@ -102,7 +110,7 @@ fun Onboard1(modifier: Modifier = Modifier,textUp: String ,textCenterTitle:Strin
                 start = 73.dp,
                 end = 88.dp,
                 top = 329.dp,
-                bottom  = 466.dp
+                bottom = 466.dp
             )
             .width(214.dp)
             .height(20.dp),
@@ -110,31 +118,61 @@ fun Onboard1(modifier: Modifier = Modifier,textUp: String ,textCenterTitle:Strin
     )
 
     Image(
-        modifier=modifier
+        modifier = modifier
             .padding(
                 start = 159.dp,
                 end = 158.dp,
                 top = 406.dp,
-                bottom  = 391.71.dp
+                bottom = 391.71.dp
             ),
-        painter = painterResource(id = R.drawable.group_2),
-        contentDescription = "group_2 image"
+        painter = painterResource(id = imageTopResId),
+        contentDescription = "Bottom  image"
     )
     Image(
-        modifier=modifier
+        modifier = modifier
             .padding(
-                start = 79.dp,
-                end = 92.dp,
-                top = 526.dp,
-                bottom  = 85.53.dp
-            ),
-        painter = painterResource(id = R.drawable.illustration),
+                start = 9.dp,
+                end = 7.dp,
+                top = 489.dp,
+                bottom = 54.dp
+            )
+            .size(359.dp, 269.dp),
+        painter = painterResource(id = imageBottomResId),
         contentDescription = "illustration image"
     )
 }
 
 @Preview
 @Composable
-private fun Onboard1Prev() {
-    Onboard1(textUp="Далее",textCenterTitle="Анализы",textCenter="Экспресс сбор и получение проб")
+private fun Onboard1Prev1() {
+    Onboard1(
+        textUp="Далее",
+        textCenterTitle="Анализы",
+        textCenter="Экспресс сбор и получение проб",
+        imageTopResId = R.drawable.group_2,
+        imageBottomResId = R.drawable.illustration)
+}
+
+
+@Preview
+@Composable
+private fun Onboard1Prev2() {
+    Onboard1(
+        textUp = "Далее",
+        textCenterTitle = "Уведомления",
+        textCenter = "Вы быстро узнаете о результатах",
+        imageTopResId = R.drawable.image5,
+        imageBottomResId = R.drawable.__2022_09_17__19_21_1
+    )
+}
+
+@Preview(showBackground = true, name = "Onboard Screen 3")
+@Composable
+private fun Onboard1Prev3() {
+    Onboard1(
+        textUp = "Завершить",
+        textCenterTitle = "Мониторинг",
+        textCenter = "Наши врачи всегда наблюдают за вашими показателями здоровья",
+        imageTopResId = R.drawable.group,
+        imageBottomResId = R.drawable._30_1)
 }
