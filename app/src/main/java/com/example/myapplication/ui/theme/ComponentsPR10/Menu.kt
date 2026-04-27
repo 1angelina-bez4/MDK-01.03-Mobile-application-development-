@@ -7,6 +7,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,54 +21,51 @@ import com.example.myapplication.ui.theme.ColorItemIconMenuUnFoc
 import com.example.myapplication.ui.theme.ColorItemTextIcontextMenuFoc
 import com.example.myapplication.ui.theme.ColorItemTextIcontextMenuUnFoc
 import com.example.myapplication.ui.theme.MyTheme
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import kotlin.collections.mutableSetOf
 
-//Класс содержащий объекты иконки
-data class  Item(
-    private val Index: Int,
-    private val Icon: Int,
-    private val title: String
-)
+
+
 @Composable
 fun Menu(modifier: Modifier = Modifier) {
-
-   // var selItem by remember { mutableSetOf("") }
+    var selItem by remember { mutableStateOf(-1) }
 
     var ItemList = listOf(
-        Item(0,R.drawable.tests,"Анализы" ),
-        Item(1,R.drawable.doc,"Результаты" ),
-        Item(2,R.drawable.massage,"Поддержка" ),
-        Item(3,R.drawable.user,"Профиль" ),
+        BarItem(0,R.drawable.tests,"Анализы" ),
+        BarItem(1,R.drawable.result,"Результаты" ),
+        BarItem(2,R.drawable.massage,"Поддержка" ),
+        BarItem(3,R.drawable.profille,"Профиль" ),
     )
+
+
     NavigationBar(
-        modifier = modifier
-            .background(MyTheme.colors.white)
+        containerColor = MyTheme.colors.white
     ) {
-        NavigationBarItem(
-            selected = true,
-            onClick = {},
-            icon = {
-                Image(
-                    imageVector = ImageVector.vectorResource(R.drawable.tests),
-                    contentDescription = null,
+        for (itemNavBar in ItemList) {
+            NavigationBarItem(
+                selected = itemNavBar.index == selItem,
+                onClick = { selItem = itemNavBar.index},
+                icon = {
+                    Image(
+                        imageVector = ImageVector.vectorResource(itemNavBar.icon),
+                        contentDescription = null,
+                    )
+                },
+                label = {
+                    Text(
+                        text = itemNavBar.title,
+                    )
+                },
+                colors = NavigationBarItemDefaults.colors(
+                    unselectedIconColor = ColorItemIconMenuUnFoc,
+                    unselectedTextColor = ColorItemTextIcontextMenuUnFoc,
+                    selectedIconColor = ColorItemIconMenuFoc,
+                    selectedTextColor = ColorItemTextIcontextMenuFoc,
+                    indicatorColor = Color.Transparent
                 )
-            },
-            label = {
-                Text(
-                    text = "Анализы",
-                )
-            },
-            //поменять местами отображение
-            colors = NavigationBarItemDefaults.colors(
-                unselectedIconColor = ColorItemIconMenuUnFoc,
-                unselectedTextColor = ColorItemTextIcontextMenuUnFoc,
-                selectedIconColor = ColorItemIconMenuFoc,
-                selectedTextColor = ColorItemTextIcontextMenuFoc,
-                indicatorColor = Color.Transparent
             )
-
-
-        )
+        }
     }
 }
 
