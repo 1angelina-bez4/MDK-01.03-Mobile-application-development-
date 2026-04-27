@@ -47,7 +47,7 @@ import com.example.myapplication.ui.theme.TextFieldColors
 import com.example.myapplication.ui.theme.TextFieldColorsBorder
 
 @Composable
-fun Screen(modifier: Modifier = Modifier) {
+fun Screen(modifier: Modifier = Modifier, navigateToScreen:() -> Unit) {
     var emailText by remember { mutableStateOf("") }
 
     var isButtonEnabled = emailText.isNotEmpty()
@@ -60,14 +60,8 @@ fun Screen(modifier: Modifier = Modifier) {
                 horizontal = 20.dp
             ),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxWidth()
-        ) {
             Spacer(modifier = Modifier.height(101.dp))
-
             Text(
                 text = "Добро пожаловать!",
                 fontSize = 24.sp,
@@ -117,7 +111,8 @@ fun Screen(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp),
-                onClick = { Log.d("MyLog", "Введенный email: $emailText") },
+                onClick = { Log.d("MyLog", "Введенный email: $emailText")
+                            navigateToScreen()},
                 enabled = isButtonEnabled,
                 shape = RoundedCornerShape(10.dp),
                 colors = ButtonColors(
@@ -134,11 +129,9 @@ fun Screen(modifier: Modifier = Modifier) {
                     lineHeight = 24.sp
                 )
             }
-        }
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxWidth()
-        ) {
+        //Изменить Spacer на динамеческий чтобы подгонялся под размер
+             Spacer(modifier = Modifier.height(238.dp))
+
             Text(
                 text = "Или войдите с помощью",
                 color = ColorTextBottom,
@@ -146,7 +139,7 @@ fun Screen(modifier: Modifier = Modifier) {
                 lineHeight = 24.sp
             )
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Button(
                 modifier = Modifier
@@ -166,11 +159,11 @@ fun Screen(modifier: Modifier = Modifier) {
             }
 
             Spacer(modifier = Modifier.height(56.dp))
-        }
+
     }
 }
 @Preview
 @Composable
 private fun ScreenPrev() {
-    Screen()
+    Screen(navigateToScreen = {})
 }

@@ -11,7 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.myapplication.ui.theme.ComponentsPR05.Screen
+import com.example.myapplication.ui.theme.ComponentsPR09.Order
+import com.example.myapplication.ui.theme.ComponentsPR09.Pay
+import com.example.myapplication.ui.theme.ComponentsPR09.Screen
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import com.example.myapplication.ui.theme.MyTheme
 import com.example.myapplication.ui.theme.MyThemePR07
@@ -21,15 +27,38 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Screen()
-//                MyThemePR07 {
-//                    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                        Greeting(
-//                            name = "Android",
-//                            modifier = Modifier.padding(innerPadding)
-//                        )
-//                    }
-//                }
+                MyThemePR07 {
+                    val navController = rememberNavController()
+
+                    NavHost(navController, startDestination = Screen) {
+                        composable<Screen>{
+                            Screen(
+                                navigateToScreen  = {
+                                    navController.navigate(route=Order)
+                                    {
+                                        popUpTo<Screen>{inclusive = false}
+                                    }
+                                }
+                            )
+                        }
+                        composable<Order>{
+                            Order(
+                                back = {navController.popBackStack()},
+                                navigateToOrder = {
+                                    navController.navigate(route=Pay)
+                                    {
+                                        popUpTo<Order>{inclusive = false}
+                                    }
+                                }
+                            )
+                        }
+                        composable<Pay>
+                        {
+                            Pay(back = { navController.popBackStack()})
+                        }
+                    }
+
+                }
         }
     }
 }

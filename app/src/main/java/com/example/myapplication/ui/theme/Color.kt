@@ -12,6 +12,8 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 
+val BACKGROUND_All = Color(0xFFFFFFFF)
+
 //Для  PR04
 
 val AccentColor = Color(0xFF00FF1E)
@@ -83,3 +85,18 @@ val LocalAppColors = staticCompositionLocalOf {
         white = Color.Unspecified
     )
 }
+
+//PR09
+
+val ColorTextComentary = Color(0xFF7E7E9A)
+val ColorTextPromo = Color(0xFF939396)
+
+//PR09
+val TextPay = Color(0xFF00B712)
+
+//PR10
+val ColorItemTextIcontextMenuUnFoc = Color(0xFFB8C1CC)
+val ColorItemIconMenuUnFoc = Color(0xFFB8C1CC)
+
+val ColorItemTextIcontextMenuFoc = Color(0xFF1A6FEE)
+val ColorItemIconMenuFoc = Color(0xFF1A6FEE)
