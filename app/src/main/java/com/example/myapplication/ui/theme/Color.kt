@@ -2,6 +2,7 @@ package com.example.myapplication.ui.theme
 
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 
 val Purple80 = Color(0xFFD0BCFF)
 val PurpleGrey80 = Color(0xFFCCC2DC)
@@ -96,7 +97,12 @@ val TextPay = Color(0xFF00B712)
 
 //PR10
 val ColorItemTextIcontextMenuUnFoc = Color(0xFFB8C1CC)
-val ColorItemIconMenuUnFoc = Color(0xFFB8C1CC)
+val ColorItemIconMenuUnFoc: Color = Color(0xFFB8C1CC)
 
 val ColorItemTextIcontextMenuFoc = Color(0xFF1A6FEE)
 val ColorItemIconMenuFoc = Color(0xFF1A6FEE)
+
+//PR11
+
+val ColorLazyRowButton = Color(0xFFF5F5F9)
+val ColorLazyRowButtonText = Color(0xFF7E7E9A)

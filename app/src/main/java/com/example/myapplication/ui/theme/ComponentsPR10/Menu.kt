@@ -23,9 +23,14 @@ import com.example.myapplication.ui.theme.ColorItemTextIcontextMenuUnFoc
 import com.example.myapplication.ui.theme.MyTheme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.ColorFilter
 import kotlin.collections.mutableSetOf
 
-
+data class  BarItem(
+    val index: Int,
+    val icon: Int,
+    val title: String
+)
 
 @Composable
 fun Menu(modifier: Modifier = Modifier) {
@@ -46,10 +51,18 @@ fun Menu(modifier: Modifier = Modifier) {
             NavigationBarItem(
                 selected = itemNavBar.index == selItem,
                 onClick = { selItem = itemNavBar.index},
+
                 icon = {
                     Image(
                         imageVector = ImageVector.vectorResource(itemNavBar.icon),
                         contentDescription = null,
+                       colorFilter = ColorFilter.tint(
+                           //если иконка нажата, ставит цвет синий ( в фокусе)
+                           if (  itemNavBar.index == selItem)
+                            ColorItemIconMenuFoc
+                           //иначе   меняет цвет на серый
+                           else ColorItemIconMenuUnFoc
+                       )
                     )
                 },
                 label = {
@@ -57,13 +70,13 @@ fun Menu(modifier: Modifier = Modifier) {
                         text = itemNavBar.title,
                     )
                 },
+                //меняет цвет текста
                 colors = NavigationBarItemDefaults.colors(
-                    unselectedIconColor = ColorItemIconMenuUnFoc,
                     unselectedTextColor = ColorItemTextIcontextMenuUnFoc,
-                    selectedIconColor = ColorItemIconMenuFoc,
                     selectedTextColor = ColorItemTextIcontextMenuFoc,
                     indicatorColor = Color.Transparent
                 )
+
             )
         }
     }
