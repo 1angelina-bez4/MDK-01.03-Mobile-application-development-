@@ -56,13 +56,13 @@ fun Menu(modifier: Modifier = Modifier) {
                     Image(
                         imageVector = ImageVector.vectorResource(itemNavBar.icon),
                         contentDescription = null,
-                       colorFilter = ColorFilter.tint(
-                           //если иконка нажата, ставит цвет синий ( в фокусе)
-                           if (  itemNavBar.index == selItem)
-                            ColorItemIconMenuFoc
-                           //иначе   меняет цвет на серый
-                           else ColorItemIconMenuUnFoc
-                       )
+                        colorFilter = ColorFilter.tint(
+                            //если иконка нажата, ставит цвет синий ( в фокусе)
+                            if (  itemNavBar.index == selItem)
+                                ColorItemIconMenuFoc
+                            //иначе   меняет цвет на серый
+                            else ColorItemIconMenuUnFoc
+                        )
                     )
                 },
                 label = {

@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.myapplication.ui.theme.AccentColorDisabledButton
 import com.example.myapplication.ui.theme.AccentColorDisabledButtonText
 import com.example.myapplication.ui.theme.AccentColorPrimaryButton
@@ -23,6 +24,7 @@ fun DisabledButton(
     onClick: () -> Unit,
     enabled: Boolean = true,
     modifier: Modifier = Modifier,
+    textSize: Int ,
 ) {
     Button(
         onClick = {onClick()},
@@ -45,7 +47,8 @@ fun DisabledButton(
     ) {
         Text(
             text = butttonText,
-            color = ColorLazyRowButtonText
+            color = ColorLazyRowButtonText,
+            fontSize = textSize.sp
         )
     }
 }
@@ -53,5 +56,5 @@ fun DisabledButton(
 @Preview
 @Composable
 private fun DisabledButtonPrev() {
-    DisabledButton("Кнопка", onClick ={})
+    DisabledButton("Кнопка", onClick ={},textSize = 16,)
 }

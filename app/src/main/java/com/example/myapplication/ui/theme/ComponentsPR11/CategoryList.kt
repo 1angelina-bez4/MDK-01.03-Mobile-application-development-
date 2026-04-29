@@ -1,6 +1,9 @@
 package com.example.myapplication.ui.theme.ComponentsPR11
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ButtonColors
@@ -15,20 +18,24 @@ import com.example.myapplication.ui.theme.ColorLazyRowButtonText
 import com.example.myapplication.ui.theme.ComponentsPR04.DisabledButton
 
 @Composable
-fun CategoryList(modifier: Modifier = Modifier) {
-    var listCat = listOf("Популярные","Covid","Комплексные", "Избранные")
-
-
+fun CategoryList(modifier: Modifier = Modifier,
+        categories: List<String>) {
    LazyRow(
        horizontalArrangement = Arrangement.spacedBy(20.dp)
    )
     {
-       items(listCat) { category ->
+       items(categories) { category ->
            DisabledButton(
+               modifier =modifier
+                   .height(50.dp)
+                   .width(145.dp)
+                   .padding(
+
+                   ),
                butttonText =category ,
                onClick = {},
                 enabled = true,
-
+               textSize=14
            )
        }
    }
@@ -37,5 +44,5 @@ fun CategoryList(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun CategoryListPrev() {
-    CategoryList()
+    CategoryList(categories=listOf())
 }
