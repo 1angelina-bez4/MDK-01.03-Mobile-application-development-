@@ -18,6 +18,7 @@ import com.example.myapplication.ui.theme.ComponentsPR05.Screen
 import com.example.myapplication.ui.theme.ComponentsPR09.Order
 import com.example.myapplication.ui.theme.ComponentsPR09.Pay
 import com.example.myapplication.ui.theme.ComponentsPR09.Screen
+import com.example.myapplication.ui.theme.ComponentsPR11.ScreenList
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import com.example.myapplication.ui.theme.MyTheme
 import com.example.myapplication.ui.theme.MyThemePR07
@@ -27,38 +28,37 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-                MyThemePR07 {
-                    val navController = rememberNavController()
+            MyThemePR07 {
+                val navController = rememberNavController()
 
-                    NavHost(navController, startDestination = Screen) {
-                        composable<Screen>{
-                            Screen(
-                                navigateToScreen  = {
-                                    navController.navigate(route=Order)
-                                    {
-                                        popUpTo<Screen>{inclusive = false}
-                                    }
+                NavHost(navController, startDestination = Screen) {
+                    composable<Screen>{
+                        Screen(
+                            navigateToScreen  = {
+                                navController.navigate(route=Order)
+                                {
+                                    popUpTo<Screen>{inclusive = false}
                                 }
-                            )
-                        }
-                        composable<Order>{
-                            Order(
-                                back = {navController.popBackStack()},
-                                navigateToOrder = {
-                                    navController.navigate(route=Pay)
-                                    {
-                                        popUpTo<Order>{inclusive = false}
-                                    }
-                                }
-                            )
-                        }
-                        composable<Pay>
-                        {
-                            Pay(back = { navController.popBackStack()})
-                        }
+                            }
+                        )
                     }
-
+                    composable<Order>{
+                        Order(
+                            back = {navController.popBackStack()},
+                            navigateToOrder = {
+                                navController.navigate(route=Pay)
+                                {
+                                    popUpTo<Order>{inclusive = false}
+                                }
+                            }
+                        )
+                    }
+                    composable<Pay> {
+                        Pay(back = { navController.popBackStack() })
+                    }
                 }
+
+            }
         }
     }
 }

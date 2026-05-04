@@ -27,31 +27,20 @@ import com.example.myapplication.ui.theme.MyTheme
 fun ListCard(modifier: Modifier = Modifier,
              listCard: List<Product>) {
 
-    LazyColumn()
+    LazyColumn(modifier = Modifier
+        .fillMaxWidth(),)
     {
         items(listCard)
         {listCard ->
-            Row(
-                modifier=modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 16.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                Title = listCard.Title,
+                Day = listCard.Day,
+                Summa = listCard.Summa,
+                buttonWidth = 96.dp
             )
-            {
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            start = 16.dp,
-                            end = 16.dp,
-                            top = 80.dp,
-                            bottom = 16.dp),
-                    Title = listCard.Title,
-                    Day = listCard.Day,
-                    Summa = listCard.Summa,
-                )
-               
-            }
 
         }
 

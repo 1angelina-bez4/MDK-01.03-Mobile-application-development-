@@ -110,3 +110,4 @@ val ColorLazyRowButtonText = Color(0xFF7E7E9A)
 val Fon = Color(0xFFF4F4F4)
 
 val ColorCard = Color(0xFFF4F4F4)
+val ColorCardFon = Color(0xFFFFFFFF)
