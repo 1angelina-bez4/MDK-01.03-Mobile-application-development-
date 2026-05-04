@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.PinnableContainer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -25,6 +26,13 @@ fun DisabledButton(
     enabled: Boolean = true,
     modifier: Modifier = Modifier,
     textSize: Int ,
+    textlineHeight: Int,
+    containerColor: Color,
+    contentColor: Color,
+    discontainerColor: Color,
+    discontentColor: Color,
+    colorText: Color
+
 ) {
     Button(
         onClick = {onClick()},
@@ -35,10 +43,10 @@ fun DisabledButton(
 //            AccentColorDisabledButtonText,
 //            AccentColorDisabledButton,
 //            AccentColorDisabledButton
-            ColorLazyRowButton,
-            ColorLazyRowButtonText,
-            ColorLazyRowButton,
-            ColorLazyRowButton
+            containerColor,
+            contentColor,
+            discontainerColor,
+            discontentColor
             ),
         modifier = modifier
 
@@ -47,8 +55,9 @@ fun DisabledButton(
     ) {
         Text(
             text = butttonText,
-            color = ColorLazyRowButtonText,
-            fontSize = textSize.sp
+            color = colorText,
+            fontSize = textSize.sp,
+            lineHeight = textlineHeight.sp
         )
     }
 }
@@ -56,5 +65,10 @@ fun DisabledButton(
 @Preview
 @Composable
 private fun DisabledButtonPrev() {
-    DisabledButton("Кнопка", onClick ={},textSize = 16,)
+    DisabledButton("Кнопка", onClick ={},textSize = 16,textlineHeight = 20,
+        containerColor = ColorLazyRowButton,
+        contentColor = ColorLazyRowButtonText,
+        discontainerColor = ColorLazyRowButton,
+        discontentColor =ColorLazyRowButton ,
+        colorText = ColorLazyRowButtonText)
 }

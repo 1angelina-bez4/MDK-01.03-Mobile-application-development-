@@ -35,7 +35,13 @@ fun CategoryList(modifier: Modifier = Modifier,
                butttonText =category ,
                onClick = {},
                 enabled = true,
-               textSize=14
+               textSize=14,
+               textlineHeight = 20,
+               containerColor = ColorLazyRowButton,
+               contentColor = ColorLazyRowButtonText,
+               discontainerColor = ColorLazyRowButton,
+               discontentColor =ColorLazyRowButton,
+               colorText = ColorLazyRowButtonText
            )
        }
    }

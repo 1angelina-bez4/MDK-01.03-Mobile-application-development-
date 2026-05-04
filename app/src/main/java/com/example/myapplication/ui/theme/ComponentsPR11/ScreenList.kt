@@ -35,7 +35,11 @@ fun ScreenList(modifier: Modifier = Modifier) {
             ),
         horizontalAlignment = Alignment.CenterHorizontally,
     ){
-        Row(){
+        Spacer(modifier= Modifier
+            .height(68.dp))
+        Row(
+
+        ){
             CategoryList(categories=listCat)
         }
         Spacer(modifier= Modifier.height(24.dp))
