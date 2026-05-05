@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.theme.ComponentsPR11
+package com.example.myapplication.domain.model
 
 data class Product(
     val Title: String,

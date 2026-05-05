@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -20,8 +21,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.Key.Companion.Menu
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myapplication.ui.theme.ComponentsPR10.Menu
-import com.google.android.gms.analytics.ecommerce.Product
+import com.example.myapplication.ui.theme.ScreenListViewModel
+
+//import com.google.android.gms.analytics.ecommerce.Product
 
 @Composable
 fun ScreenList(
@@ -32,21 +37,12 @@ fun ScreenList(
         onBack()
     }
 
-    var listCat = listOf("Популярные", "Covid", "Комплексные", "Избранные")
-
-    val product = listOf(
-        Product("ПЦР-тест на определение РНК коронавируса стандартный", 2, 1800),
-        Product("Клинический анализ крови с лейкоцитарной формулой", 1, 690),
-        Product("Биохимический анализ крови, базовый", 1, 2440),
-        Product("СОЭ (венозная кровь)", 1, 240),
-        Product("ПЦР-тест на определение РНК коронавируса стандартный", 2, 1800),
-        Product("Клинический анализ крови с лейкоцитарной формулой", 1, 690),
-        Product("Биохимический анализ крови, базовый", 1, 2440),
-        Product("СОЭ (венозная кровь)", 1, 240)
-    )
     var showAnalizi by remember { mutableStateOf(false) }
+    val viewModel: ScreenListViewModel = viewModel()
+    val categories by viewModel.categories.collectAsState()
+    val product by viewModel.product.collectAsState()
 
-
+    
         Scaffold(
             bottomBar = {
                 Menu(
@@ -71,7 +67,7 @@ fun ScreenList(
             ) {
                 Spacer(modifier = Modifier.height(68.dp))
                 Row {
-                    CategoryList(categories = listCat)
+                    CategoryList(categories = categories)
                 }
                 Spacer(modifier = Modifier.height(24.dp))
                 Column {

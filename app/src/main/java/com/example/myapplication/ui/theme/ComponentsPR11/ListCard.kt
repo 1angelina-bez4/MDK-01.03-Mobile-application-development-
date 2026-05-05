@@ -22,7 +22,7 @@ import com.example.myapplication.ui.theme.AccentColorPrimaryButton
 import com.example.myapplication.ui.theme.ColorLazyRowButton
 import com.example.myapplication.ui.theme.ColorLazyRowButtonText
 import com.example.myapplication.ui.theme.ComponentsPR04.DisabledButton
-import com.example.myapplication.ui.theme.ComponentsPR11.Product
+import com.example.myapplication.domain.model.Product
 
 
 @Composable
