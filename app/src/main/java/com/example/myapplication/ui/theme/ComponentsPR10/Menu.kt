@@ -20,9 +20,10 @@ import com.example.myapplication.ui.theme.ColorItemIconMenuFoc
 import com.example.myapplication.ui.theme.ColorItemIconMenuUnFoc
 import com.example.myapplication.ui.theme.ColorItemTextIcontextMenuFoc
 import com.example.myapplication.ui.theme.ColorItemTextIcontextMenuUnFoc
-import com.example.myapplication.ui.theme.MyTheme
+
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import com.example.myapplication.ui.theme.MyTheme
 
 data class BarItem(
     val index: Int,
@@ -35,7 +36,7 @@ fun Menu(
     modifier: Modifier = Modifier,
     onMenuClick: (String) -> Unit = {}  // Только колбэк
 ) {
-    var selItem by remember { mutableStateOf(0) }
+    var selItem by remember { mutableStateOf(-1) }
 
     var ItemList = listOf(
         BarItem(0, R.drawable.tests, "Анализы"),

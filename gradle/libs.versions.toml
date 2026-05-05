@@ -10,6 +10,8 @@ kotlin = "2.0.21"
 composeBom = "2024.09.00"
 navigation = "2.9.7"
 foundationLayout = "1.11.0"
+playServicesAnalyticsImpl = "18.2.0"
+playServicesPay = "16.5.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -28,6 +30,8 @@ androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-te
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 navigation-compose = {group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation"}
 androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "foundationLayout" }
+play-services-analytics-impl = { group = "com.google.android.gms", name = "play-services-analytics-impl", version.ref = "playServicesAnalyticsImpl" }
+play-services-pay = { group = "com.google.android.gms", name = "play-services-pay", version.ref = "playServicesPay" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

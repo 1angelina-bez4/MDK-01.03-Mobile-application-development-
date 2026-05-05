@@ -10,8 +10,7 @@ object Screen
 @Serializable
 object Order
 
-@Serializable
-object ANALIZI
+
 //делаем объект экрана из PR09
 @Serializable
 object Pay

@@ -13,11 +13,9 @@ import androidx.compose.ui.layout.PinnableContainer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.myapplication.ui.theme.AccentColorDisabledButton
-import com.example.myapplication.ui.theme.AccentColorDisabledButtonText
-import com.example.myapplication.ui.theme.AccentColorPrimaryButton
 import com.example.myapplication.ui.theme.ColorLazyRowButton
 import com.example.myapplication.ui.theme.ColorLazyRowButtonText
+
 
 @Composable
 fun DisabledButton(

@@ -53,7 +53,7 @@ fun Pay(modifier: Modifier = Modifier, back: () -> Unit) {
                     }
                 )
             }
-        ) { contentPadding ->
+        )  { contentPadding ->
             Column(
                 modifier = modifier
                     .background(Color.White)

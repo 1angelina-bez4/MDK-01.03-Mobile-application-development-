@@ -235,5 +235,5 @@ fun Order(modifier: Modifier = Modifier, back: () -> Unit, navigateToOrder: () -
 @Preview
 @Composable
 private fun OrderPrev() {
-    Order(back ={},navigateToOrder={})
+   Order(back = {}, navigateToOrder = {})
 }

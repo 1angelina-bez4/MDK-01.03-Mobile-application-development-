@@ -6,16 +6,16 @@ plugins {
 
 android {
     namespace = "com.example.myapplication"
-    compileSdk =36
-//    compileSdk {
-//        version = release(36) {
-//            minorApiLevel = 1
-//        }
-//    }
+   // compileSdk =36
+    compileSdk {
+        version = release(36) {
+            minorApiLevel = 1
+        }
+    }
 
     defaultConfig {
         applicationId = "com.example.myapplication"
-        minSdk = 33
+        minSdk = 36
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -51,6 +51,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.foundation.layout)
+    implementation(libs.play.services.analytics.impl)
+    implementation(libs.play.services.pay)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

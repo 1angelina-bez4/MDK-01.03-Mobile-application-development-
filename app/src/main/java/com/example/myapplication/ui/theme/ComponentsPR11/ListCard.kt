@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,7 +22,8 @@ import com.example.myapplication.ui.theme.AccentColorPrimaryButton
 import com.example.myapplication.ui.theme.ColorLazyRowButton
 import com.example.myapplication.ui.theme.ColorLazyRowButtonText
 import com.example.myapplication.ui.theme.ComponentsPR04.DisabledButton
-import com.example.myapplication.ui.theme.MyTheme
+import com.example.myapplication.ui.theme.ComponentsPR11.Product
+
 
 @Composable
 fun ListCard(modifier: Modifier = Modifier,
@@ -36,9 +38,9 @@ fun ListCard(modifier: Modifier = Modifier,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp, vertical = 8.dp),
-                Title = listCard.Title,
+               Title = listCard.Title,
                 Day = listCard.Day,
-                Summa = listCard.Summa,
+               Summa = listCard.Summa,
                 buttonWidth = 96.dp
             )
 
@@ -50,7 +52,8 @@ fun ListCard(modifier: Modifier = Modifier,
 @Preview
 @Composable
 private fun ListCardPrev() {
-    ListCard(listCard= listOf(      Product("ПЦР-тест на определение РНК коронавируса стандартный",2,1800),
+    ListCard(listCard= listOf(
+        Product("ПЦР-тест на определение РНК коронавируса стандартный",2,1800),
         Product("Клинический анализ крови с лейкоцитарной формулой",1,690),
         Product("Биохимический анализ крови, базовый",1,2440),
         Product("СОЭ (венозная кровь)",1,240)))

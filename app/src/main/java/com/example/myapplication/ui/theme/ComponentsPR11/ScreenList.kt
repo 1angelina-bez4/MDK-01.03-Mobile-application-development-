@@ -17,9 +17,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.key.Key.Companion.Menu
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.ComponentsPR10.Menu
+import com.google.android.gms.analytics.ecommerce.Product
 
 @Composable
 fun ScreenList(
@@ -44,15 +46,16 @@ fun ScreenList(
     )
     var showAnalizi by remember { mutableStateOf(false) }
 
-    if (showAnalizi) {
-        ScreenList(onBack = { showAnalizi = false })
-    } else {
+
         Scaffold(
             bottomBar = {
                 Menu(
                     onMenuClick = { menuTitle ->
                         if (menuTitle == "Анализы") {
                             showAnalizi = true
+                        }
+                        else{
+                                onBack()
                         }
                     }
                 )
@@ -76,7 +79,7 @@ fun ScreenList(
                 }
             }
         }
-    }
+    //}
 }
 
 @Preview
